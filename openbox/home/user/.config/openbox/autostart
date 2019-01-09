@@ -1,0 +1,5 @@
+# Change Background
+feh --bg-scale ~/.config/openbox/background/darth.png &
+
+# Statusbar
+polybar cima & polybar baixo &
