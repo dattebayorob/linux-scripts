@@ -42,7 +42,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Clearlooks</name>
+    <name>Onyx</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -181,7 +181,9 @@
     <!-- Keybindings for switching desktops removed -->
     <!-- Keybinding for Openbox Menu -->
     <keybind key="A-F1">
-      <action name="ShowMenu"><menu>root-menu</menu></action>
+      <action name="ShowMenu">
+        <menu>root-menu</menu>
+      </action>
     </keybind>
     <!-- Keybindings for windows management -->
     <keybind key="W-d">
@@ -276,6 +278,15 @@
           <name>Xterm</name>
         </startupnotify>
         <command>lxterminal</command>
+      </action>
+    </keybind>
+    <keybind key="C-A-l">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>I3Lock</name>
+        </startupnotify>
+        <command>i3lock -i ~/.config/openbox/background/lock.png</command>
       </action>
     </keybind>
   </keyboard>
