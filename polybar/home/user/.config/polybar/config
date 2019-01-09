@@ -82,11 +82,12 @@ overline-size = 2
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = xos4 Terminus:size=10;0
+font-0 = Roboto:size=10:weight=bold;0
 font-1 = OpenSans:size=10;0
-font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=12;1"
-font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=12;1"
-font-4 = "Font Awesome 5 Brands:pixelsize=12;1"
+font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=12;0"
+font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=12;0"
+font-4 = "Font Awesome 5 Brands:pixelsize=12;0"
+font-5 = "Material Icons:style=Regular:pixelsize=12;1"
 
 modules-left = hora
 #git-cron screenshot screencast usuario spotify
@@ -124,13 +125,14 @@ overline-size = 2
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = xos4 Terminus:size=10;0
+font-0 = Roboto:size=10;0
 font-1 = OpenSans:size=10;0
 font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=12;1"
 font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=12;1"
-font-4 = "Font Awesome 5 Brands:pixelsize=12;1"
+font-4 = "Font Awesome 5 Brands:pixelsize=16;6"
+font-5 = "Font Awesome 5 Brands:pixelsize=20;6"
 
-modules-left = menu-power lock exit
+modules-left = menu-apps app-chrome app-eclipse
 modules-center = 
 modules-right = memoria cpu root home
 
@@ -141,8 +143,8 @@ cursor-scroll = ns-resize
 [module/janela]
 type = internal/xwindow
 
-format-prefix = "  "
-format-prefix-foreground = ${cores.icones-modulos}
+format-prefix = "  "
+format-prefix-foreground = ${cores.branco}
 
 format = <label>
 format-background = ${cores.transparente}
@@ -296,29 +298,17 @@ bar-volume-foreground-4 = #FE2EC8
 bar-volume-foreground-5 = #FF0080
 bar-volume-foreground-6 = #DF013A
 
-# Data
-[module/data]
-type = internal/date
-interval = 1
-date = %a, %d-%m-%Y
-date-alt = %A, %d de %B de %G%
-time = %H:%M
-format =  <label>
-format-underline = ${cores.transparente}
-format-foreground = ${cores.amarelo}
-label = %date%
-label-foreground = ${cores.fontes}
-
 # Hora
 [module/hora]
 type = internal/date
 interval = 1
-time = %R
-format =  <label>
+date =  %R
+date-alt =  %d de %B de %Y
+format = <label>
 format-underline = ${cores.transparente}
-format-foreground = ${cores.icones-modulos}
-label = %time%
-label-foreground = ${cores.fontes}
+format-foreground = ${cores.branco}
+label = %date%
+label-foreground = ${cores.branco}
 
 # Bateria
 [module/bateria]
@@ -347,9 +337,9 @@ label-discharging = %percentage%%
 label-discharging-foreground = ${cores.fontes}
 
 format-full-prefix = " "
-format-full-prefix-foreground = ${cores.icones-modulos}
+format-full-prefix-foreground = ${cores.branco}
 label-full = 100%
-label-full-foreground = ${cores.fontes}
+label-full-foreground = ${cores.branco}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
@@ -375,21 +365,21 @@ hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input
 warn-temperature = 60
 units = true
 
-format = <ramp> <label>
+format = <label>
 format-underline = ${cores.transparente}
 
-format-warn = <ramp> <label-warn>
+format-warn = <label-warn>
 
 label = %temperature-c%
-label-foreground = ${cores.fontes}
+label-foreground = ${cores.branco}
 
 label-warn = %temperature-c%
-label-warn-foreground = ${cores.fontes}
+label-warn-foreground = ${cores.laranja}
 
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
-ramp-foreground = ${cores.laranja}
+ramp-foreground = ${cores.branco}
 
 # Wireless
 [module/wireless]
@@ -397,83 +387,48 @@ type = internal/network
 interface = wlp1s0
 interval = 1.0
 
-format-connected = <label-connected> <ramp-signal>
+format-connected = <ramp-signal> <label-connected>
+format-disconnected = <label-disconnected>
 format-packetloss = <animation-packetloss>
 label-connected = %essid%
-#%upspeed%   %downspeed%  %essid%
-label-connected-foreground = ${cores.fontes}
+label-connected-foreground = ${cores.branco}
+label-disconnected = . . .
+label-disconnected-foreground = ${cores.branco}
+ramp-signal-0 = 
+ramp-signal-0-foreground = #FFFFFF
+ramp-signal-1 = 
+ramp-signal-1-foreground = #FFFFFF
+ramp-signal-2 = 
+ramp-signal-2-foreground = #FFFFFF
+ramp-signal-3 = 
+ramp-signal-3-foreground = #FFFFFF
+ramp-signal-4 = 
+ramp-signal-4-foreground = #FFFFFF
+ramp-signal-5 = 
+ramp-signal-5-foreground = #FFFFFF
 
-ramp-signal-0 = 
-ramp-signal-0-foreground = #BD574C
-ramp-signal-1 = 
-ramp-signal-1-foreground = #FF8066
-ramp-signal-2 = 
-ramp-signal-2-foreground = #F5DE72
-ramp-signal-3 = 
-ramp-signal-3-foreground = #D8DE72
-ramp-signal-4 = 
-ramp-signal-4-foreground = #BADE72
-ramp-signal-5 = 
-ramp-signal-5-foreground = #96DE72
-
-# Ethernet
-[module/ethernet]
-type = internal/network
-interface = enp2s0f2
-interval = 1.0
-
-format-connected = <label-connected> <ramp-signal>
-format-packetloss = <animation-packetloss>
-label-connected = %upspeed%   %downspeed%  %local_ip%
-label-connected-foreground = ${cores.fontes}
-
-ramp-signal-0 = 
-ramp-signal-0-foreground = ${cores.icones-modulos}
-
-# Git-Cron
-[module/git-cron]
+[module/menu-apps]
 type = custom/text
-content = 
-content-foreground = ${cores.cinza}
-content-underline = ${cores.transparente}
-click-left = ~/.local/bin/git-cron.sh -c &
+content = 
+content-foreground = ${cores.roxo}
+content-padding = 1
+label-font = 5
+click-left = jgmenu_run
 
-# Screenshot
-[module/screenshot]
+[module/app-chrome]
 type = custom/text
-content = 
-content-foreground = ${cores.verde}
-content-underline = ${cores.transparente}
-click-left = ~/.local/bin/screenshot.sh &
+content = 
+content-foreground = ${cores.branco}
+content-padding = 1
+click-left = google-chrome-stable
+click-right = google-chrome-stable --incognito
 
-# Screencast
-[module/screencast]
+[module/app-eclipse]
 type = custom/text
-content = 
-content-foreground = ${cores.vermelho}
-content-underline = ${cores.transparente}
-click-left = ~/.local/bin/screencast.sh &
-
-# Menu Power
-[module/menu-power]
-type = custom/text
-content = 
-content-foreground = ${cores.cinzaescuro}
-click-left = ~/.local/bin/menu-power.sh &
-
-# Lock
-[module/lock]
-type = custom/text
-content = 
-content-foreground = ${cores.cinzaescuro}
-click-left = ~/.local/bin/i3lock.sh &
-
-# Exit
-[module/exit]
-type = custom/text
-content = 
-content-foreground = ${cores.cinzaescuro}
-click-left = sudo pkill X
+content = 
+content-foreground = ${cores.branco}
+content-padding = 1
+click-left = /home/administrador/Documentos/packages/sts-4.1.0.RELEASE/SpringToolSuite4
 
 [settings]
 screenchange-reload = true
