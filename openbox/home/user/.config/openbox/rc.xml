@@ -179,12 +179,6 @@
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
     <!-- Keybindings for switching desktops removed -->
-    <!-- Keybinding for Openbox Menu -->
-    <keybind key="A-F1">
-      <action name="ShowMenu">
-        <menu>root-menu</menu>
-      </action>
-    </keybind>
     <!-- Keybindings for windows management -->
     <keybind key="W-d">
       <action name="ToggleShowDesktop"/>
@@ -268,6 +262,22 @@
           <name>Pcmanfm</name>
         </startupnotify>
         <command>pcmanfm</command>
+      </action>
+    </keybind>
+    <!-- Keybinding for Openbox Menu -->
+    <keybind key="A-F1">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>App-Menu</name>
+        </startupnotify>
+        <command>jgmenu_run</command>
+      </action>
+    </keybind>
+    <!-- Keybinding for Execute a command -->
+    <keybind key="A-F2">
+      <action name="Execute">
+        <command>dmenu_run</command>
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
