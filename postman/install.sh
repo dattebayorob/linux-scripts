@@ -8,7 +8,11 @@ apt-get install gconf-service gconf-service-backend gconf2-common libgconf-2-4 -
 
 ## constants
 postmanPath="/home/${1}/Documentos/packages/"
-postmanPackage=$(ls Postman* | grep .tar.gz)
+postmanPackage=$(ls | grep Postman | grep .tar.gz)
+if [ -z $postmanPackage ]; then
+	wget https://dl.pstmn.io/download/latest/linux64 -O Postman.tar.gz
+	postmanPackage="Postman.tar.gz"
+fi
 mkdir -p $postmanPath
 tar -xf $postmanPackage -C $postmanPath
 cp ${postmanPath}Postman/app/resources/app/assets/icon.png /usr/share/icons/hicolor/48x48/apps/postman.png
