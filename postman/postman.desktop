@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=4.1
+Type=Application
+Name=Postman
+GenericName=Postman
+Comment=Postman Makes API Development Simple.
+Exec=/home/administrador/Documentos/packages/Postman/Postman
+Terminal=false
+MimeType=text/plain;
+Icon=postman.png
+Categories=Network;WebBrowser;
+StartupNotify=true
+Actions=Window;Document;
