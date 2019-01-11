@@ -1,8 +1,15 @@
 # Change Background
-feh --bg-scale ~/.config/openbox/background/darth.png &
+feh --bg-scale ~/.config/openbox/background/wall.png &
 
 # App menu list
 jgmenu &
 
 # Statusbar
-polybar cima & polybar baixo &
+polybar cima &
+polybar baixo &
+#polybar bottom-left &
+#polybar bottom-right &
+
+# panel
+#sleep 2 && 
+#lxpanel &
