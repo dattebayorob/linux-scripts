@@ -1,19 +1,24 @@
 #!/bin/bash
 #Instalação e configuração do Java-8-oracle
-cpu=$(uname -m)
-if [ ${cpu} == 'x86_64' ]; then
-	arch="x64"
-	#arch='amd64'
-else
-	#cpu='i586'
-	arch="i586"
-fi
-if [ ! -d /usr/lib/jvm ]; then
-	mkdir -p /usr/lib/jvm
-else
-	rm -rf /usr/lib/jvm/*
-fi
 
+SetupAmbient(){
+	cpu=$(uname -m)
+	if [ ${cpu} == 'x86_64' ]; then
+		arch="x64"
+	else
+		arch="i586"
+	fi
+
+
+	if [ ! -d /usr/lib/jvm ]; then
+		mkdir -p /usr/lib/jvm
+	else
+		rm -rf /usr/lib/jvm/*
+	fi
+	if [ ! -d $arch ]; then
+		mkdir $arch
+	fi
+}
 JdkVersion(){
 	if [ -z $(ls $1) ];then
 		wget -c -P $1 --no-cookies --no-check-certificate --header \
@@ -22,6 +27,8 @@ JdkVersion(){
 	fi
 	jdk="jdk1."$(ls $1 | awk '{print substr($0,5,1),substr($0,7,3)}' | sed 's/ /.0_/')
 }
+
+SetupAmbient
 JdkVersion $arch
 echo "Instalando: "$jdk
 apt-get remove sun-java6*
