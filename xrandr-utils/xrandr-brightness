@@ -1,3 +1,4 @@
+#!/bin/bash
 MAX_BRIGHTNESS=1.0
 MIN_BRIGHTNESS=0.2
 CURRENT=$(xrandr --current --verbose | grep Brightness | awk 'NR==1{print$2}')
@@ -27,12 +28,17 @@ DefaultBrightness(){
 	XrandrCmd
 }
 
-if [[ $1 = "--increase" ]]; then
-	IncreaseBrightness
-elif [[ $1 = "--decrease" ]]; then
-	DecreaseBrightness
-elif [[ $1 = "--default" ]]; then
-	DefaultBrightness
-else
-	echo -e "Usage:\n\t--increase: Increase brightness\n\t--decrease: Decrease brightness\n\t--default: Change to default brightness"
-fi
+case $1 in 
+	"--increase")
+		IncreaseBrightness
+		;;
+	"--decrease")
+		DecreaseBrightness
+		;;
+	"--default")
+		DefaultBrightness
+		;;
+	*)
+		echo -e "Usage:\n\t--increase: Increase brightness\n\t--decrease: Decrease brightness\n\t--default: Change to default brightness"
+		;;
+esac
