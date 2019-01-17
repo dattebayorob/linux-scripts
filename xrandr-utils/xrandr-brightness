@@ -1,0 +1,38 @@
+MAX_BRIGHTNESS=1.0
+MIN_BRIGHTNESS=0.2
+CURRENT=$(xrandr --current --verbose | grep Brightness | awk 'NR==1{print$2}')
+DEFAULT=1.0
+MONITOR=DP-1
+XrandrCmd(){
+	xrandr --output $MONITOR --brightness $brightness
+}
+IncreaseBrightness(){
+	brightness=$(echo "scale=1;$CURRENT+0.1" | bc | sed 's/^\./0./')
+	if [[ $brightness > $MAX_BRIGHTNESS ]]; then
+		echo "Max brightness reached"
+		return
+	fi
+	XrandrCmd
+}
+DecreaseBrightness(){
+	brightness=$(echo "scale=1;$CURRENT-0.1" | bc | sed 's/^\./0./')
+	if [[ $brightness < $MIN_BRIGHTNESS ]]; then
+		echo "Min Brightness reached"
+		return
+	fi
+	XrandrCmd
+}
+DefaultBrightness(){
+	brightness=$DEFAULT
+	XrandrCmd
+}
+
+if [[ $1 = "--increase" ]]; then
+	IncreaseBrightness
+elif [[ $1 = "--decrease" ]]; then
+	DecreaseBrightness
+elif [[ $1 = "--default" ]]; then
+	DefaultBrightness
+else
+	echo -e "Usage:\n\t--increase: Increase brightness\n\t--decrease: Decrease brightness\n\t--default: Change to default brightness"
+fi
