@@ -3,7 +3,7 @@ MAX_BRIGHTNESS=1.0
 MIN_BRIGHTNESS=0.2
 CURRENT=$(xrandr --current --verbose | grep Brightness | awk 'NR==1{print$2}')
 DEFAULT=1.0
-MONITOR=DP-1
+MONITOR=LVDS-1
 XrandrCmd(){
 	xrandr --output $MONITOR --brightness $brightness
 }
