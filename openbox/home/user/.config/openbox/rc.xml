@@ -183,6 +183,16 @@
     <keybind key="W-d">
       <action name="ToggleShowDesktop"/>
     </keybind>
+    <keybind key="W-Up">
+    	<action name="Execute">
+    		<command>~/Documentos/packages/linux-scripts/xrandr-utils/xrandr-brightness --increase</command>
+    	</action>
+    </keybind>
+    <keybind key="W-Down">
+    	<action name="Execute">
+    		<command>~/Documentos/packages/linux-scripts/xrandr-utils/xrandr-brightness --decrease</command>
+    	</action>
+    </keybind>
     <!-- Keybindings for windows -->
     <keybind key="A-F4">
       <action name="Close"/>
@@ -277,7 +287,7 @@
     <!-- Keybinding for Execute a command -->
     <keybind key="A-F2">
       <action name="Execute">
-        <command>dmenu_run</command>
+        <command>lxpanelctl run</command>
       </action>
     </keybind>
     <!-- Keybindings for running applications -->

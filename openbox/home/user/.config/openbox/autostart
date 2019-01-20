@@ -2,14 +2,10 @@
 feh --bg-scale ~/.config/openbox/background/wall.png &
 
 # App menu list
-jgmenu &
+#jgmenu &
 
 # Statusbar
 polybar cima &
-polybar baixo &
-#polybar bottom-left &
-#polybar bottom-right &
 
 # panel
-#sleep 2 && 
-#lxpanel &
+lxpanel &
