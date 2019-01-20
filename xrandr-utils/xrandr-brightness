@@ -7,10 +7,15 @@ MONITOR=LVDS-1
 XrandrCmd(){
 	xrandr --output $MONITOR --brightness $brightness
 }
+DunstNotify(){
+	message=$1
+	icon="/usr/share/icons/Adwaita/scalable/status/weather-clear-symbolic.svg"
+	notify-send -i $icon "$message"
+}
 IncreaseBrightness(){
 	brightness=$(echo "scale=1;$CURRENT+0.1" | bc | sed 's/^\./0./')
 	if [[ $brightness > $MAX_BRIGHTNESS ]]; then
-		echo "Max brightness reached"
+		DunstNotify "Max Brightness reached"
 		return
 	fi
 	XrandrCmd
@@ -18,14 +23,14 @@ IncreaseBrightness(){
 DecreaseBrightness(){
 	brightness=$(echo "scale=1;$CURRENT-0.1" | bc | sed 's/^\./0./')
 	if [[ $brightness < $MIN_BRIGHTNESS ]]; then
-		echo "Min Brightness reached"
+		DunstNotify "Min Brightness reached"
 		return
 	fi
 	XrandrCmd
 }
 DefaultBrightness(){
 	brightness=$DEFAULT
-	XrandrCmd
+	XrandrCmd && DunstNotify "Default Brightness"
 }
 
 case $1 in 
