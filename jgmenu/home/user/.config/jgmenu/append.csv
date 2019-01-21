@@ -1,4 +1,0 @@
-^sep()
-Encerrar,openbox --exit ,system-log-out
-Reiniciar,systemctl -i reboot,gnome-session-reboot
-Desligar,systemctl -i poweroff,system-shutdown
