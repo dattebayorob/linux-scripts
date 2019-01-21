@@ -1,0 +1,22 @@
+#!/bin/bash
+scrotFull(){
+	scrot ss_full_'%d-%m-%Y-%H:%M:%S_$wx$h.png' -e 'mv $f ~/Imagens && notify-send -i ~/Imagens/$f "captura de tela" "$f"'
+}
+scrotPartial(){
+	notify-send "Selecione a área à tirar a captura de tela"
+	scrot -s ss_partial_'%d-%m-%Y-%H:%M:%S_$wx$h.png' -e 'mv $f ~/Imagens && notify-send -i ~/Imagens/$f "captura de tela" "$f"'
+}
+scrotCurrent(){
+	scrot -u ss_current_'%d-%m-%Y-%H:%M:%S_$wx$h.png' -e 'mv $f ~/Imagens && notify-send -i ~/Imagens/$f "captura de tela" "$f"'
+}
+case $1 in 
+	"--partial")
+		scrotPartial
+		;;
+	"--current")
+		scrotCurrent
+		;;
+	*)
+		scrotFull
+		;;
+esac
