@@ -4,13 +4,14 @@ MIN_BRIGHTNESS=0.2
 CURRENT=$(xrandr --current --verbose | grep Brightness | awk 'NR==1{print$2}')
 DEFAULT=1.0
 MONITOR=LVDS-1
-XrandrCmd(){
-	xrandr --output $MONITOR --brightness $brightness
-}
 DunstNotify(){
 	message=$1
 	icon="/usr/share/icons/Adwaita/scalable/status/weather-clear-symbolic.svg"
-	notify-send -i $icon "$message"
+	pkill dunst
+	notify-send -t 1000 -i $icon "$message"
+}
+XrandrCmd(){
+	xrandr --output $MONITOR --brightness $brightness && DunstNotify "Changing brightness to $brightness"
 }
 IncreaseBrightness(){
 	brightness=$(echo "scale=1;$CURRENT+0.1" | bc | sed 's/^\./0./')
