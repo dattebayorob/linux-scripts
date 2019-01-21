@@ -210,7 +210,19 @@
     <!-- Launch scrot when Print is pressed -->
     <keybind key="Print">
       <action name="Execute">
-        <command>scrot ss_full_'%Y-%m-%d-%H:%M:%S_$wx$h.png' -e 'mv $f ~/Imagens'</command>
+        <command>~/Documentos/packages/linux-scripts/utils/scrotClient</command>
+      </action>
+    </keybind>
+    <!-- Take a print of focused window-->
+    <keybind key="A-Print">
+      <action name="Execute">
+        <command>~/Documentos/packages/linux-scripts/utils/scrotClient --current</command>
+      </action>
+    </keybind>
+    <!-- Take a print of selected area-->
+    <keybind key="S-A-Print">
+      <action name="Execute">
+        <command>~/Documentos/packages/linux-scripts/utils/scrotClient --partial</command>
       </action>
     </keybind>
     <!-- Keybindings for window switching -->
