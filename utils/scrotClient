@@ -4,7 +4,7 @@ FILE_EXT=".png"
 ssCheck(){
 	if [ -e $1 ]; then
 		mv $1 ~/Imagens
-		notify-send -i ~/Imagens/$1 'Captura de tela' $1
+		notify-send -t 5000 -i ~/Imagens/$1 'Captura de tela' $1
 	else
 		notify-send -u critical 'Captura de tela' 'Erro na captura de tela'
 	fi
