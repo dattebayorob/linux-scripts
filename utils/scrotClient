@@ -1,13 +1,26 @@
 #!/bin/bash
+FILE_NAME='%d-%m-%Y-%H:%M:%S_$wx$h'
+FILE_EXT=".png"
+ssCheck(){
+	if [ -e $1 ]; then
+		mv $1 ~/Imagens
+		notify-send -i ~/Imagens/$1 'Captura de tela' $1
+	else
+		notify-send -u critical 'Captura de tela' 'Erro na captura de tela'
+	fi
+}
 scrotFull(){
-	scrot ss_full_'%d-%m-%Y-%H:%M:%S_$wx$h.png' -e 'mv $f ~/Imagens && notify-send -i ~/Imagens/$f "captura de tela" "$f"'
+	ssName=$(scrot "ss_${FILE_NAME}${FILE_EXT}" -e 'echo $f')
+	ssCheck $ssName
 }
 scrotPartial(){
 	notify-send "Selecione a área à tirar a captura de tela"
-	scrot -s ss_partial_'%d-%m-%Y-%H:%M:%S_$wx$h.png' -e 'mv $f ~/Imagens && notify-send -i ~/Imagens/$f "captura de tela" "$f"'
+	ssName=$(scrot -s "ss_${FILE_NAME}_partial${FILE_EXT}" -e 'echo $f')
+	ssCheck $ssName
 }
 scrotCurrent(){
-	scrot -u ss_current_'%d-%m-%Y-%H:%M:%S_$wx$h.png' -e 'mv $f ~/Imagens && notify-send -i ~/Imagens/$f "captura de tela" "$f"'
+	ssName=$(scrot -u "ss_${FILE_NAME}_current${FILE_EXT}" -e 'echo $f')
+	ssCheck $ssName
 }
 case $1 in 
 	"--partial")
