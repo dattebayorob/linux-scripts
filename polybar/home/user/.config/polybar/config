@@ -56,8 +56,8 @@ spotify = #00D965
 
 # Barra de cima
 [bar/cima]
-monitor = LVDS-1
-monitor-strict = false
+#monitor = LVDS-1
+#monitor-strict = false
 width = 100%
 height = 25
 radius = 7.0
@@ -85,59 +85,17 @@ module-margin-right = 1
 font-0 = Roboto:size=10:weight=bold;0
 font-1 = OpenSans:size=10;0
 font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=12;0"
-font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=12;0"
+font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=10;0"
 font-4 = "Font Awesome 5 Brands:pixelsize=12;0"
 font-5 = "Material Icons:style=Regular:pixelsize=12;1"
 
 modules-left = hora
-#git-cron screenshot screencast usuario spotify
 modules-center = janela
-modules-right = temperatura wireless bateria
+modules-right = memoria cpu root home wireless bateria
 
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-# Barra de baixo
-[bar/baixo]
-monitor = LVDS-1
-monitor-strict = false
-cdwidth = 100%
-height = 30
-radius = 7.0
-fixed-center = true
-bottom = true
-locale = pt_BR.UTF-8
-
-background = ${cores.transparente}
-foreground = ${cores.transparente}
-
-line-size = 0
-line-color = ${cores.vermelho}
-border-size = 0
-border-color = ${cores.vermelho}
-
-padding-left = 1
-padding-right = 1
-
-underline-size = 2
-overline-size = 2
-
-module-margin-left = 1
-module-margin-right = 1
-
-font-0 = Roboto:size=10;0
-font-1 = OpenSans:size=10;0
-font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=12;1"
-font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=12;1"
-font-4 = "Font Awesome 5 Brands:pixelsize=16;6"
-font-5 = "Font Awesome 5 Brands:pixelsize=20;6"
-
-modules-left = menu-apps app-chrome app-eclipse
-modules-center = 
-modules-right = memoria cpu root home
-
-cursor-click = pointer
-cursor-scroll = ns-resize
 
 # Janela
 [module/janela]
@@ -149,10 +107,10 @@ format-prefix-foreground = ${cores.branco}
 format = <label>
 format-background = ${cores.transparente}
 format-foreground = ${cores.fontes}
-format-padding = 4
+format-padding = 0
 
 label = %title%
-label-maxlen = 50
+label-maxlen = 30
 
 label-empty = Área de Trabalho
 label-empty-foreground = ${cores.fontes}
@@ -164,12 +122,12 @@ mount-0 = /
 interval = 10
 fixed-values = true
 
-format-mounted-prefix = " root "
-format-mounted-prefix-foreground = ${cores.verde}
+format-mounted-prefix = " "
+format-mounted-prefix-foreground = ${cores.branco}
 format-mounted-underline = ${cores.transparente}
 format-mounted = <label-mounted>
 label-mounted = %free%
-label-mounted-foreground = ${cores.verdeclaro}
+label-mounted-foreground = ${cores.branco}
 
 
 # Discos/Home
@@ -179,24 +137,13 @@ mount-0 = /home
 interval = 10
 fixed-values = true
 
-format-mounted-prefix = "home "
-format-mounted-prefix-foreground = ${cores.verde}
+format-mounted-prefix = " "
+format-mounted-prefix-foreground = ${cores.branco}
 format-mounted-underline = ${cores.transparente}
 format-mounted = <label-mounted>
 label-mounted = %free%
-label-mounted-foreground = ${cores.verdeclaro}
+label-mounted-foreground = ${cores.branco}
 
-
-# Usuário
-[module/usuario]
-type = custom/script
-interval = 1
-
-format-prefix = " "
-format-prefix-foreground = ${cores.azul}
-format-underline = ${cores.transparente}
-exec = echo $USER@$HOSTNAME
-format-foreground = ${cores.azul}
 
 # Spotify
 [module/spotify]
@@ -217,86 +164,22 @@ type = internal/cpu
 interval = 0.5
 format = <label> 
 
-format-prefix = " CPU "
-format-prefix-foreground = #FF8000
+format-prefix = " "
+format-prefix-foreground = ${cores.branco}
 
 label = %percentage%%
-label-foreground = #F5A9BC
+label-foreground = ${cores.branco}
 
 # Memória
 [module/memoria]
 type = internal/memory
 format = <label>
 
-format-prefix = " RAM "
-format-prefix-foreground = #B40431
+format-prefix = " "
+format-prefix-foreground = ${cores.branco}
 
 label = %gb_used%
-label-foreground = #F7819F
-
-# Brilho
-[module/brilho]
-type = internal/backlight
-card = intel_backlight
-format = <label> <bar>
-
-format-prefix = " "
-format-prefix-foreground = ${cores.icones-modulos}
-
-label = %percentage%%
-label-foreground = ${cores.fontes}
-
-bar-indicator = |
-bar-indicator-foreground = ${cores.icones-modulos}
-bar-fill = ─
-bar-gradient = true
-bar-empty= ─
-bar-empty-foreground = ${cores.cinzaescuro}
-bar-width = 8
-bar-foreground-0 = #D8CEF6
-bar-foreground-1 = #D0A9F5
-bar-foreground-2 = #DA81F5
-bar-foreground-3 = #FA58F4
-bar-foreground-4 = #FE2EC8
-bar-foreground-5 = #FF0080
-bar-foreground-6 = #DF013A
-
-# Volume
-[module/volume]
-type = internal/pulseaudio
-interval = 5
-use-ui-max = false
-sink = alsa_output.pci-0000_00_1f.3.analog-stereo
-
-master-soundcard = hw:1
-speaker-soundcard = hw:1
-headphone-soundcard = hw:1
-
-format-volume-prefix = " "
-format-volume-prefix-foreground = ${cores.icones-modulos}
-
-format-volume = <label-volume> <bar-volume>
-
-label-volume = %percentage%%
-label-volume-foreground = ${cores.fontes}
-
-label-muted =   ───────
-label-muted-foreground = ${cores.icones-modulos}
-
-bar-volume-gradient = true
-bar-volume-indicator = |
-bar-volume-indicator-foreground = ${cores.icones-modulos}
-bar-volume-fill = ─
-bar-volume-empty = ─
-bar-volume-empty-foreground = ${cores.cinzaescuro}
-bar-volume-width = 8
-bar-volume-foreground-0 = #D8CEF6
-bar-volume-foreground-1 = #D0A9F5
-bar-volume-foreground-2 = #DA81F5
-bar-volume-foreground-3 = #FA58F4
-bar-volume-foreground-4 = #FE2EC8
-bar-volume-foreground-5 = #FF0080
-bar-volume-foreground-6 = #DF013A
+label-foreground = ${cores.branco}
 
 # Hora
 [module/hora]
@@ -336,50 +219,25 @@ label-charging-foreground = ${cores.fontes}
 label-discharging = %percentage%%
 label-discharging-foreground = ${cores.fontes}
 
-format-full-prefix = " "
+format-full-prefix = " "
 format-full-prefix-foreground = ${cores.branco}
 label-full = 100%
 label-full-foreground = ${cores.branco}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
 
 bar-capacity-width = 20
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
 animation-charging-framerate = 220
-
-# Temperatura
-[module/temperatura]
-type = internal/temperature
-interval = 0.5
-thermal-zone = 0
-hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input
-warn-temperature = 60
-units = true
-
-format = <label>
-format-underline = ${cores.transparente}
-
-format-warn = <label-warn>
-
-label = %temperature-c%
-label-foreground = ${cores.branco}
-
-label-warn = %temperature-c%
-label-warn-foreground = ${cores.laranja}
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${cores.branco}
 
 # Wireless
 [module/wireless]
@@ -406,29 +264,6 @@ ramp-signal-4 = 
 ramp-signal-4-foreground = #FFFFFF
 ramp-signal-5 = 
 ramp-signal-5-foreground = #FFFFFF
-
-[module/menu-apps]
-type = custom/text
-content = 
-content-foreground = ${cores.roxo}
-content-padding = 1
-label-font = 5
-click-left = jgmenu_run
-
-[module/app-chrome]
-type = custom/text
-content = 
-content-foreground = ${cores.branco}
-content-padding = 1
-click-left = google-chrome-stable
-click-right = google-chrome-stable --incognito
-
-[module/app-eclipse]
-type = custom/text
-content = 
-content-foreground = ${cores.branco}
-content-padding = 1
-click-left = /home/administrador/Documentos/packages/sts-4.1.0.RELEASE/SpringToolSuite4
 
 [settings]
 screenchange-reload = true
