@@ -1,0 +1,11 @@
+type = internal/fs
+mount-0 = /home
+interval = 10
+fixed-values = true
+
+format-mounted-prefix = " "
+format-mounted-prefix-foreground = ${cores.branco}
+format-mounted-underline = ${cores.transparente}
+format-mounted = <label-mounted>
+label-mounted = %free%
+label-mounted-foreground = ${cores.branco}

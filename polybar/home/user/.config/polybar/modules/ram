@@ -1,0 +1,8 @@
+type = internal/memory
+format = <label>
+
+format-prefix = " "
+format-prefix-foreground = ${cores.branco}
+
+label = %gb_used%
+label-foreground = ${cores.branco}

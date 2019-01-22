@@ -1,0 +1,43 @@
+battery = BAT0
+adapter = AC0
+type = internal/battery
+full-at = 90
+interval = 1
+poll-interval = 5
+time-format = %H:%M
+
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+
+format-charging-underline = ${cores.transparente}
+format-discharging-underline = ${cores.transparente}
+
+format-charging-foreground = ${cores.verde}
+format-discharging-foreground = ${cores.vermelho}
+format-full-foreground = ${cores.icones-modulos}
+
+label-charging = %percentage%%
+label-charging-foreground = ${cores.fontes}
+
+label-discharging = %percentage%%
+label-discharging-foreground = ${cores.fontes}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${cores.branco}
+label-full = 100%
+label-full-foreground = ${cores.branco}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+bar-capacity-width = 20
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 220

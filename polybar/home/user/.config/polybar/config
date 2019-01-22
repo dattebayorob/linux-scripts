@@ -6,7 +6,6 @@
 #   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
 #   https://github.com/jaagr/polybar
 
-
 #----------------------------
 # Cores
 #----------------------------
@@ -89,181 +88,15 @@ font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=10;0"
 font-4 = "Font Awesome 5 Brands:pixelsize=12;0"
 font-5 = "Material Icons:style=Regular:pixelsize=12;1"
 
-modules-left = hora
-modules-center = janela
-modules-right = memoria cpu root home wireless bateria
+modules-left = clock
+modules-center = xwindow
+modules-right = ram cpu root home wireless battery
 
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-
-# Janela
-[module/janela]
-type = internal/xwindow
-
-format-prefix = "  "
-format-prefix-foreground = ${cores.branco}
-
-format = <label>
-format-background = ${cores.transparente}
-format-foreground = ${cores.fontes}
-format-padding = 0
-
-label = %title%
-label-maxlen = 30
-
-label-empty = Área de Trabalho
-label-empty-foreground = ${cores.fontes}
-
-# Discos
-[module/root]
-type = internal/fs
-mount-0 = /
-interval = 10
-fixed-values = true
-
-format-mounted-prefix = " "
-format-mounted-prefix-foreground = ${cores.branco}
-format-mounted-underline = ${cores.transparente}
-format-mounted = <label-mounted>
-label-mounted = %free%
-label-mounted-foreground = ${cores.branco}
-
-
-# Discos/Home
-[module/home]
-type = internal/fs
-mount-0 = /home
-interval = 10
-fixed-values = true
-
-format-mounted-prefix = " "
-format-mounted-prefix-foreground = ${cores.branco}
-format-mounted-underline = ${cores.transparente}
-format-mounted = <label-mounted>
-label-mounted = %free%
-label-mounted-foreground = ${cores.branco}
-
-
-# Spotify
-[module/spotify]
-interval = 1
-format-prefix = " "
-format-prefix-foreground = ${cores.spotify}
-format-padding = 1
-format-foreground = ${cores.fontes}
-format-underline = ${cores.transparente}
-type = custom/script
-exec = ~/.local/bin/spotify.sh "%artist% - %title% (%album%)"
-tail = true
-label-maxlen = 80
-
-# CPU
-[module/cpu]
-type = internal/cpu
-interval = 0.5
-format = <label> 
-
-format-prefix = " "
-format-prefix-foreground = ${cores.branco}
-
-label = %percentage%%
-label-foreground = ${cores.branco}
-
-# Memória
-[module/memoria]
-type = internal/memory
-format = <label>
-
-format-prefix = " "
-format-prefix-foreground = ${cores.branco}
-
-label = %gb_used%
-label-foreground = ${cores.branco}
-
-# Hora
-[module/hora]
-type = internal/date
-interval = 1
-date =  %R
-date-alt =  %d de %B de %Y
-format = <label>
-format-underline = ${cores.transparente}
-format-foreground = ${cores.branco}
-label = %date%
-label-foreground = ${cores.branco}
-
-# Bateria
-[module/bateria]
-battery = BAT0
-adapter = AC0
-type = internal/battery
-full-at = 90
-interval = 1
-poll-interval = 5
-time-format = %H:%M
-
-format-charging = <animation-charging> <label-charging>
-format-discharging = <ramp-capacity> <label-discharging>
-
-format-charging-underline = ${cores.transparente}
-format-discharging-underline = ${cores.transparente}
-
-format-charging-foreground = ${cores.verde}
-format-discharging-foreground = ${cores.vermelho}
-format-full-foreground = ${cores.icones-modulos}
-
-label-charging = %percentage%%
-label-charging-foreground = ${cores.fontes}
-
-label-discharging = %percentage%%
-label-discharging-foreground = ${cores.fontes}
-
-format-full-prefix = " "
-format-full-prefix-foreground = ${cores.branco}
-label-full = 100%
-label-full-foreground = ${cores.branco}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-
-bar-capacity-width = 20
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-animation-charging-framerate = 220
-
-# Wireless
-[module/wireless]
-type = internal/network
-interface = wlp1s0
-interval = 1.0
-
-format-connected = <ramp-signal> <label-connected>
-format-disconnected = <label-disconnected>
-format-packetloss = <animation-packetloss>
-label-connected = %essid%
-label-connected-foreground = ${cores.branco}
-label-disconnected = . . .
-label-disconnected-foreground = ${cores.branco}
-ramp-signal-0 = 
-ramp-signal-0-foreground = #FFFFFF
-ramp-signal-1 = 
-ramp-signal-1-foreground = #FFFFFF
-ramp-signal-2 = 
-ramp-signal-2-foreground = #FFFFFF
-ramp-signal-3 = 
-ramp-signal-3-foreground = #FFFFFF
-ramp-signal-4 = 
-ramp-signal-4-foreground = #FFFFFF
-ramp-signal-5 = 
-ramp-signal-5-foreground = #FFFFFF
+# Include module config file, with a list of modules
+include-file = ~/.config/polybar/modules.conf
 
 [settings]
 screenchange-reload = true
