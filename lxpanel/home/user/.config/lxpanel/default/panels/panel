@@ -50,12 +50,12 @@ Plugin {
     }
     item {
       name=Reiniciar
-      image=system-shutdown
+      image=gnome-reboot
       action=systemctl -i reboot
     }
     item {
       name=Desligar
-      image=gnome-session-reboot
+      image=gnome-poweroff
       action=systemctl -i poweroff
     }
     image=/usr/share/icons/LoginIcons/apps/64/computer.svg
@@ -118,11 +118,11 @@ Plugin {
 Plugin {
   type=taskbar
   Config {
-    IconsOnly=0
+    IconsOnly=-1
     tooltips=0
     FlatButton=-1
     ShowAllDesks=0
-    GroupedTasks=1
+    GroupedTasks=0
     DisableUpscale=0
     MaxTaskWidth=30
     spacing=1

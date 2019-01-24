@@ -31,7 +31,7 @@ DecreaseBrightness(){
 }
 DefaultBrightness(){
 	brightness=$DEFAULT
-	XrandrCmd && DunstNotify "Default Brightness"
+	XrandrCmd
 }
 
 case $1 in 

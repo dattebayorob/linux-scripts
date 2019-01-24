@@ -6,7 +6,7 @@ ssCheck(){
 		mv $1 ~/Imagens
 		notify-send -t 5000 -i ~/Imagens/$1 'Captura de tela' $1
 	else
-		notify-send -u critical 'Captura de tela' 'Erro na captura de tela'
+		notify-send -u critical -t 5000 'Captura de tela' 'Erro na captura de tela'
 	fi
 }
 scrotFull(){
