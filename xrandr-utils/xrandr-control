@@ -1,0 +1,62 @@
+#!/bin/bash
+NOTE="LVDS-1"
+VGA="VGA-1"
+HDMI="HDMI-1"
+
+
+NOTE_STATUS="$(cat /sys/class/drm/card0-DP-1/status)"
+VGA_STATUS="$(cat /sys/class/drm/card0-VGA-1/status)"
+HDMI_STATUS="$(cat /sys/class/drm/card0-HDMI-A-1/status)"
+
+checkMonitor(){
+	if [ $VGA_STATUS = "connected" ]; then
+		MONITOR=$VGA;
+	elif [ $HDMI_STATUS = "connected" ];then
+		MONITOR=$HDMI
+	else
+		MONITOR=$HDMI
+		monitorOnlyLocal
+		MONITOR=$VGA
+		monitorOnlyLocal
+		exit;
+	fi
+}
+monitorExtend(){
+	checkMonitor
+	xrandr --output $NOTE --auto --primary --output $MONITOR --auto --above $NOTE;
+}
+monitorMirror(){
+	checkMonitor
+	xrandr --output $NOTE --auto --primary --output $MONITOR --auto --above $NOTE;
+}
+monitorOnlyLocal(){
+	xrandr --output $NOTE --auto --primary --output $MONITOR --off
+}
+monitorOnlyExternal(){
+	checkMonitor
+	xrandr --output $NOTE --off --output $MONITOR --auto --primary
+}
+savePreferences(){
+	echo $1 > /home/administrador/.config/xrandr/xrandr-monitor
+}
+
+case $1 in 
+	"--extend")
+		monitorExtend
+		savePreferences 'monitorExtend'
+		;;
+	"--mirror")
+		monitorMirror
+		savePreferences 'monitorMirror'
+		;;
+	"--local")
+		monitorOnlyLocal
+		savePreferences 'monitorOnlyLocal'
+		;;
+	"--external")
+		savePreferences 'monitorOnlyExternal'
+		;;
+	*)
+		$(cat /home/administrador/.config/xrandr/xrandr-monitor)
+		;;
+esac
