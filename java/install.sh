@@ -31,7 +31,6 @@ JdkVersion(){
 SetupAmbient
 JdkVersion $arch
 echo "Instalando: "$jdk
-apt-get remove sun-java6*
 tar -zxf $arch/$(ls ${arch}) -C /usr/lib/jvm
 ln -s /usr/lib/jvm/$jdk /usr/lib/jvm/java-8-oracle
 update-alternatives --remove-all java
