@@ -58,7 +58,7 @@ Plugin {
       image=gnome-poweroff
       action=systemctl -i poweroff
     }
-    image=/usr/share/icons/LoginIcons/apps/64/computer.svg
+    image=/home/administrador/.config/lxpanel/default/assets/icons/arch-logo.png
   }
 }
 Plugin {
@@ -86,7 +86,10 @@ Plugin {
       id=firefox.desktop
     }
     Button {
-      id=sts.desktop
+      id=spring-tool-suite.desktop
+    }
+    Button {
+      id=visual-studio-code.desktop
     }
   }
 }
