@@ -3,10 +3,10 @@ FILE_NAME='%d-%m-%Y-%H:%M:%S_$wx$h'
 FILE_EXT=".png"
 ssCheck(){
 	if [ -e $1 ]; then
-		mv $1 ~/Imagens
-		notify-send -t 5000 -i ~/Imagens/$1 'Captura de tela' $1
+		mv $1 ~/Pictures
+		notify-send -t 5000 -i ~/Pictures/$1 'Screenshot' $1
 	else
-		notify-send -u critical -t 5000 'Captura de tela' 'Erro na captura de tela'
+		notify-send -u critical -t 5000 'Screenshot' 'Something went wrong durin the screenshot'
 	fi
 }
 scrotFull(){
@@ -14,7 +14,7 @@ scrotFull(){
 	ssCheck $ssName
 }
 scrotPartial(){
-	notify-send "Selecione a área à tirar a captura de tela"
+	notify-send "Select the are to be taken the screenshot"
 	ssName=$(scrot -s "ss_${FILE_NAME}_partial${FILE_EXT}" -e 'echo $f')
 	ssCheck $ssName
 }
