@@ -1,9 +1,0 @@
-type = internal/cpu
-interval = 0.5
-format = <label> 
-
-format-prefix = " "
-format-prefix-foreground = ${cores.branco}
-
-label = %percentage%%
-label-foreground = ${cores.branco}
