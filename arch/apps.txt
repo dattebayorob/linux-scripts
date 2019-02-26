@@ -1,0 +1,13 @@
+grub
+sudo
+dhclient
+wicd
+wicd-gtk
+f2fs-tools
+xorg
+xorg-xinit
+penbox
+lxpanel
+lxterminal
+libinput
+wget

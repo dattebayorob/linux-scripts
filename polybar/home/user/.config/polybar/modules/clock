@@ -1,9 +1,0 @@
-type = internal/date
-interval = 1
-date =  %R
-date-alt =  %d de %B de %Y
-format = <label>
-format-underline = ${cores.transparente}
-format-foreground = ${cores.branco}
-label = %date%
-label-foreground = ${cores.branco}

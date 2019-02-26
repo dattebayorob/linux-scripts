@@ -1,14 +1,12 @@
 #!/bin/bash
+source 'packages/packageInstall.sh'
 
 #INSTALL PACKAGES, RUN AS NORMAL USER
-PACKAGES=$(cat packages/packages.txt | sed ':a;N;$!ba;s/\n/ /g')
+if [ -z $1 ]; then
+	PACKAGES=$(cat packages/packages.txt | sed ':a;N;$!ba;s/\n/ /g')
+else
+	PACKAGES=$1
+fi
 for pkg in $PACKAGES; do
-	pkg=visual-studio-code-bin
-	pkgGit=https://aur.archlinux.org/${pkg}.git
-	git clone $pkgGit packages/$pkg
-	cd packages/$pkg
-	makepkg -Acs
-	echo $ENV_PASSWORD | sudo -S pacman -U --noconfirm ${pkg}*pkg.tar.xz
-	cd ../../
-	echo $ENV_PASSWORD | sudo -S rm -r packages/$pkg
+	packageInstall $pkg "packages"
 done

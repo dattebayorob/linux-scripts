@@ -1,5 +1,0 @@
-google-chrome
-jdk8
-spring-tool-suite
-sublime-text-dev
-visual-studio-code-bin
