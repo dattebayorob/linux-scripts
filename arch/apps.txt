@@ -11,3 +11,5 @@ lxpanel
 lxterminal
 libinput
 wget
+nodejs
+npm
