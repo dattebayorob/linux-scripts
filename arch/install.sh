@@ -30,4 +30,8 @@ systemctl enable wicd.service
 # SETUP BASIC USER SETTINGS
 cp -rf /etc/skel/.* /home/administrador/
 echo exec openbox-session > /home/administrador/.xinitrc
+DIRS="Desktop Documents Pictures Videos Downloads"
+for dir in $DIRS; do
+	mkdir /home/administrador/$dir
+done
 chown -R administrador:administrador /home/administrador/
