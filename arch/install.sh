@@ -1,5 +1,7 @@
 #!/bin/bash
 
+USER_DIRS="Desktop Documents Pictures Videos Downloads"
+
 # INSTALL BASE PACKAGES
 APPS=$(cat apps.txt | sed ':a;N;$!ba;s/\n/ /g')
 sudo pacman -Sy --noconfirm $APPS
@@ -30,8 +32,5 @@ systemctl enable wicd.service
 # SETUP BASIC USER SETTINGS
 cp -rf /etc/skel/.* /home/administrador/
 echo exec openbox-session > /home/administrador/.xinitrc
-DIRS="Desktop Documents Pictures Videos Downloads"
-for dir in $DIRS; do
-	mkdir /home/administrador/$dir
-done
+mkdir /home/administrador/$USER_DIRS
 chown -R administrador:administrador /home/administrador/
