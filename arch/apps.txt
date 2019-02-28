@@ -13,3 +13,5 @@ libinput
 wget
 nodejs
 npm
+pcmanfm
+ttf-dejavu
