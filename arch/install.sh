@@ -4,7 +4,7 @@ USER_DIRS="Desktop Documents Pictures Videos Downloads"
 
 # INSTALL BASE PACKAGES
 APPS=$(cat apps.txt | sed ':a;N;$!ba;s/\n/ /g')
-sudo pacman -Sy --noconfirm $APPS
+pacman -Sy --noconfirm $APPS
 
 # SETUP hostname
 echo dtb-arch > /etc/hostname
@@ -13,12 +13,13 @@ echo dtb-arch > /etc/hostname
 sed -i 's/#en_US.UTF-8/en_US.UTF-8/' /etc/locale.gen
 locale-gen
 echo LANG=en_US.UTF-8 > /etc/locale.conf
-ln -sf /usr/share/zoneinfo/America/Fortaleza > /etc/localtime
+rm -f /etc/localtime
+ln -s /usr/share/zoneinfo/America/Fortaleza > /etc/localtime
 
 # SETUP USERS
 useradd -m -G wheel -s /bin/bash administrador
-echo $ENV_PASSWORD | passwd administrador --stdin
-echo $ENV_PASSWORD | passwd root --stdin
+echo "administrador:$ENV_PASSWORD" | chpasswd
+echo "root:$ENV_PASSWORD" | chpasswd
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 
 # SETUP GRUB
@@ -30,7 +31,9 @@ mkinitcpio -p linux
 systemctl enable wicd.service
 
 # SETUP BASIC USER SETTINGS
-cp -rf /etc/skel/.* /home/administrador/
+cp -f /etc/skel/.* /home/administrador/
 echo exec openbox-session > /home/administrador/.xinitrc
-mkdir /home/administrador/$USER_DIRS
+for dir in $USER_DIRS; do
+   mkdir /home/administrador/$dir
+done
 chown -R administrador:administrador /home/administrador/

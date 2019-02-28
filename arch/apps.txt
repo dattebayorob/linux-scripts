@@ -6,7 +6,7 @@ wicd-gtk
 f2fs-tools
 xorg
 xorg-xinit
-penbox
+openbox
 lxpanel
 lxterminal
 libinput
