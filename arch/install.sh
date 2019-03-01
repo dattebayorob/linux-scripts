@@ -38,7 +38,9 @@ chmod 644 /etx/X11/xorg.conf.d
 useradd -m -G wheel -s /bin/bash administrador
 echo "administrador:$ENV_PASSWORD" | chpasswd
 echo "root:$ENV_PASSWORD" | chpasswd
-sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
+sed -i 's/# %wheel/%wheel/g' /etc/sudoers
+sed -i 's#NOPASSWD: ALL#NOPASSWD: /usr/bin/pacman#' /etc/sudoers
+
 
 # Basic user settings
 cp -f /etc/skel/.* /home/administrador/
