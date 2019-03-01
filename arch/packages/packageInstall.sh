@@ -1,17 +1,34 @@
 #!/bin/bash
 
 #Run this from ../packagesInstall.sh
+pkgInstall(){
+	git clone $pkgGit $pkgPath
+	cd $pkgPath
+	yes | makepkg -Acs
+	sudo pacman -U $pkgInstaller --noconfirm
+	cd ../../
+}
 packageInstall(){
 	pkg=$1
 	dir="packages/"
 	pkgGit=https://aur.archlinux.org/${pkg}.git
-	if echo "Cloning git repository from ${pkgGit}" && git clone $pkgGit ${dir}${pkg} > /dev/null 2>&1; then
-		cd ${dir}${pkg}
-		makepkg -Acs
-		echo $ENV_PASSWORD | sudo -S pacman -U --noconfirm ${pkg}*pkg.tar.xz
-		cd ../../
-		echo $ENV_PASSWORD | sudo -S rm -r packages/$pkg
+	pkgPath=${dir}${pkg}
+	pkgInstaller=${pkg}*pkg.tar.xz
+	if [ -d ${dir}${pkg} ]; then
+		if [ -f $pkgPath/$pkgInstaller ];then
+			sudo pacman -U $pkgPath/$pkgInstaller --noconfirm
+		else
+			cd ${dir}${pkg}
+			if ! yes | makepkg -Acs;then
+				cd ../../
+				rm -rf $pkgPath
+				pkgInstall
+			else
+				cd ../../
+				sudo pacman -U $pkgPath/$pkgInstaller --noconfirm
+			fi
+		fi
 	else
-		echo "The git repository cant be reached"
+		pkgInstall
 	fi
 }
