@@ -32,6 +32,11 @@ cp -rf settings/10-evdev.conf /etc/X11/xorg.conf.d/
 # settings for touchpad using libinput
 cp -rf settings/30-touchpad.conf /etc/X11/xorg.conf.d/
 chmod 644 /etx/X11/xorg.conf.d
+# Install postgresql
+su postgres -c "initdb -D /var/lib/postgres/data"
+systemctl enable postgresql.service
+systemctl start postgresql.service
+su postgres -c "psql -c \"ALTER USER postgres WITH PASSWORD 'postgres';\""
 
 ### SETUP USER
 # Useradd and user settings
