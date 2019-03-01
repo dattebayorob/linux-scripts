@@ -15,3 +15,7 @@ nodejs
 npm
 pcmanfm
 ttf-dejavu
+feh
+vlc
+scrot
+dunst
