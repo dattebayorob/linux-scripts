@@ -49,7 +49,7 @@ sed -i 's#NOPASSWD: ALL#NOPASSWD: /usr/bin/pacman#' /etc/sudoers
 
 # Basic user settings
 cp -f /etc/skel/.* /home/administrador/
-echo exec openbox-session > /home/administrador/.xinitrc
+echo -e "udiskie &\nexec openbox-session" > /home/administrador/.xinitrc
 for dir in $USER_DIRS; do
    mkdir /home/administrador/$dir
 done

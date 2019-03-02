@@ -19,3 +19,5 @@ feh
 vlc
 scrot
 dunst
+udisks2
+udiskie
