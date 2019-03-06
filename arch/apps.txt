@@ -21,3 +21,4 @@ scrot
 dunst
 udisks2
 udiskie
+transmission-qt
