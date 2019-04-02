@@ -24,3 +24,7 @@ udiskie
 transmission-qt
 cbatticon
 ntfs-3g
+pulseaudio
+pavucontrol
+cifs-utils
+gvfs-smb
