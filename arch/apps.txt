@@ -30,3 +30,4 @@ cifs-utils
 gvfs-smb
 cups
 system-config-printer
+ghostscript
