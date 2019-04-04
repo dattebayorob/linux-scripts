@@ -24,6 +24,12 @@ mkinitcpio -p linux
 # SETUP NETWORK
 systemctl enable wicd.service
 
+# SETUP CUPS
+systemctl enable org.cups.cupsd.service
+systemctl start org.cups.cupsd.service
+systemctl enable org.cups.cupsd.socket
+systemctl start org.cups.cupsd.socket
+
 ### SETUP SYSTEM SETTINGS
 # hostname
 echo dtb-arch > /etc/hostname
