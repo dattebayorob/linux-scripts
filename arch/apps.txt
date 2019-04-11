@@ -31,3 +31,7 @@ gvfs-smb
 cups
 system-config-printer
 ghostscript
+dbeaver
+postgresql
+git
+tk
