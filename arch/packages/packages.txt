@@ -5,3 +5,4 @@ sublime-text-dev
 visual-studio-code-bin
 postman-bin
 paper-icon-theme-git
+docker-git
