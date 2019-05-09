@@ -35,3 +35,6 @@ dbeaver
 postgresql
 git
 tk
+firefox
+glibc
+freetype2
