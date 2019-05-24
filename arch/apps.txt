@@ -38,3 +38,4 @@ tk
 firefox
 glibc
 freetype2
+android-udev
