@@ -51,7 +51,7 @@ echo "administrador:$ENV_PASSWORD" | chpasswd
 echo "root:$ENV_PASSWORD" | chpasswd
 sed -i 's/# %wheel/%wheel/g' /etc/sudoers
 sed -i 's#NOPASSWD: ALL#NOPASSWD: /usr/bin/pacman#' /etc/sudoers
-
+usermod -aG docker administrador
 
 # Basic user settings
 cp -f /etc/skel/.* /home/administrador/
