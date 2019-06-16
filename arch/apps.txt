@@ -3,7 +3,6 @@ sudo
 dhclient
 wicd
 wicd-gtk
-f2fs-tools
 xorg
 xorg-xinit
 openbox
@@ -32,7 +31,6 @@ cups
 system-config-printer
 ghostscript
 dbeaver
-postgresql
 git
 tk
 firefox
