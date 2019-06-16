@@ -55,3 +55,5 @@ for dir in $USER_DIRS; do
    mkdir /home/administrador/$dir
 done
 chown -R administrador:administrador /home/administrador/
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
