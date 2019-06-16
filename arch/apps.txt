@@ -7,7 +7,7 @@ xorg
 xorg-xinit
 openbox
 lxpanel
-lxterminal
+termite
 libinput
 wget
 nodejs
