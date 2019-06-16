@@ -37,7 +37,7 @@ echo dtb-arch > /etc/hostname
 cp -rf settings/10-evdev.conf /etc/X11/xorg.conf.d/
 # settings for touchpad using libinput
 cp -rf settings/30-touchpad.conf /etc/X11/xorg.conf.d/
-chmod 644 /etx/X11/xorg.conf.d
+chmod 644 /etc/X11/xorg.conf.d
 
 ### SETUP USER
 # Useradd and user settings
@@ -46,7 +46,6 @@ echo "administrador:$ENV_PASSWORD" | chpasswd
 echo "root:$ENV_PASSWORD" | chpasswd
 sed -i 's/# %wheel/%wheel/g' /etc/sudoers
 sed -i 's#NOPASSWD: ALL#NOPASSWD: /usr/bin/pacman#' /etc/sudoers
-usermod -aG docker administrador
 
 # Basic user settings
 cp -f /etc/skel/.* /home/administrador/
