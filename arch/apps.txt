@@ -1,4 +1,8 @@
 grub
+efibootmgr
+dosfstools
+os-prober
+mtools
 sudo
 dhclient
 wicd

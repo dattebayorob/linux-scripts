@@ -17,7 +17,9 @@ echo "KEYMAP=br-abnt2" > /etc/vconsole.conf
 echo "localectl set-keymap --no-convert br-abnt2" >> /etc/bash.bashrc
 
 # SETUP GRUB
-grub-install /dev/sda
+mkdir /boot/EFI
+mount /dev/sda1 /boot/EFI
+grub-install --target=x86_64-efi --bootloader-id=grub --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 mkinitcpio -p linux
 
