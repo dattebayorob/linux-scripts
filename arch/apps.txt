@@ -15,6 +15,7 @@ nodejs
 npm
 plasma-desktop
 plasma-nm
+plasma-pa
 powerdevil
 dolphin
 ttf-dejavu
