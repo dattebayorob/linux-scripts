@@ -4,11 +4,12 @@ dosfstools
 os-prober
 zsh
 mtools
+networkmanager
 sudo
 dhclient
 xorg
 xorg-xinit
-termite
+konsole
 libinput
 wget
 nodejs
@@ -20,10 +21,7 @@ powerdevil
 dolphin
 ttf-dejavu
 vlc
-scrot
-udisks2
 transmission-qt
-cbatticon
 ntfs-3g
 pulseaudio
 pavucontrol
@@ -39,3 +37,10 @@ firefox
 glibc
 freetype2
 android-udev
+openvpn
+kscreen
+papirus-icon-theme
+krdc
+openssh
+vinagre
+spectacle
