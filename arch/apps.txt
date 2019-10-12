@@ -2,6 +2,7 @@ grub
 efibootmgr
 dosfstools
 os-prober
+nano
 zsh
 mtools
 networkmanager
@@ -17,6 +18,8 @@ npm
 plasma-desktop
 plasma-nm
 plasma-pa
+breeze-gtk
+kde-gtk-config
 powerdevil
 dolphin
 ttf-dejavu
