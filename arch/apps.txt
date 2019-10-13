@@ -18,6 +18,7 @@ npm
 plasma-desktop
 plasma-nm
 plasma-pa
+ark
 breeze-gtk
 kde-gtk-config
 powerdevil
