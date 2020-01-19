@@ -48,3 +48,6 @@ krdc
 openssh
 vinagre
 spectacle
+bluez
+bluez-utils
+bluedevil
