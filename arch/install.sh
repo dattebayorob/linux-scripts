@@ -32,6 +32,10 @@ systemctl start org.cups.cupsd.service
 systemctl enable org.cups.cupsd.socket
 systemctl start org.cups.cupsd.socket
 
+# SETUP BLUETOOTH
+systemctl enable bluetooth.service
+systectl start bluetooth.service
+
 ### SETUP SYSTEM SETTINGS
 # hostname
 echo dtb-arch > /etc/hostname
