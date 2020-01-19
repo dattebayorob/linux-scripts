@@ -51,3 +51,4 @@ spectacle
 bluez
 bluez-utils
 bluedevil
+pulseaudio-bluetooth
